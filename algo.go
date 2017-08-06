@@ -44,43 +44,31 @@ func algo(costs [][]int) ([]int, error) {
 
 	// loop until the matching is perfect
 	for p, r := match.isPerfect(); !p; p, r = match.isPerfect() {
-		fmt.Println("matching:", match)
-		fmt.Println("root:", r)
-
-		edges := label.initializeSlacks(r) // initializes the min slacks to r
-		tre := makeTree(n, r, edges)       // alternating tree rooted at r
+		e := label.initializeSlacks(r) // initializes the min slacks to r
+		t := makeTree(n, r, e)         // alternating tree rooted at r
 
 		// loop until the matching is augmented
 		for true {
 			var j int // new column index in the tree
 
-			fmt.Println("before tree:", tre)
 			// Extend the tree
-			if b, tmp := tre.extend(); b {
-				fmt.Println("Tree extended with vertex:", tmp)
-				j = tmp
+			if b, k := t.extend(); b {
+				j = k
 			} else {
-				s, t := tre.indices()
-				fmt.Println("Tree not extended components:", s, t)
-				e := label.update(s, t)
-				tre.addTightEdges(e)
-				fmt.Println("New labels:", label.left, label.right)
-				_, j = tre.extend()
-				fmt.Println("Tree extended with vertex:", j)
+				u, v := t.indices()
+				e := label.update(u, v)
+				t.addTightEdges(e)
+				_, j = t.extend()
 			}
-			fmt.Println("after tree:", tre)
 
 			if b, i := match.isMatched(j); b {
-				fmt.Println("new vertex is matched with:", i)
 				// Add the edge (i, j) to the tree
-				tre.addEdge(i, j)
+				t.addEdge(i, j)
 				e := label.updateSlacks(i)
-				tre.addTightEdges(e)
+				t.addTightEdges(e)
 			} else {
-				fmt.Println("new vertex is not matched")
 				// Augment the matching
-				path := tre.pathToRoot(j)
-				fmt.Println("path to root", path)
+				path := t.pathToRoot(j)
 				match.augment(path)
 				break
 			}

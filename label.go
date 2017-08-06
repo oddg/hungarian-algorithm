@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 type label struct {
 	n      int
 	costs  [][]int //costs
@@ -54,7 +50,6 @@ func (l *label) update(s []int, t []int) []edge {
 			min = sl
 		}
 	}
-	fmt.Println("min slack:", min)
 
 	// increase the label on the elements of s
 	for _, i := range s {
