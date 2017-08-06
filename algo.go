@@ -1,12 +1,8 @@
 package main
 
-import (
-	"fmt"
-)
-
 // Returns the solution as an array `a` such that each row `i` is matched to
 // column `a[i]`
-func algo(costs [][]int) ([]int, error) {
+func Algo(costs [][]int) ([]int, error) {
 	// Validate the input
 	if err := validate(costs); err != nil {
 		return []int{}, err
@@ -53,26 +49,4 @@ func algo(costs [][]int) ([]int, error) {
 	}
 
 	return match.format(), nil
-}
-
-func test(costs [][]int) {
-	r, err := algo(costs)
-	if err != nil {
-		fmt.Println("error:", err)
-	} else {
-		fmt.Println("everything went fine")
-		fmt.Println(r)
-	}
-}
-
-func main() {
-	//test([][]int{ {11, 6, 12}, {12, 4, 6}, {8, 12, 11}, })
-	test([][]int{
-		{13, 13, 19, 50, 33, 38},
-		{73, 33, 71, 77, 97, 95},
-		{20, 8, 56, 55, 64, 35},
-		{26, 25, 72, 32, 55, 77},
-		{83, 40, 69, 3, 53, 49},
-		{67, 20, 44, 29, 86, 61},
-	})
 }
