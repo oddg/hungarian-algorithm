@@ -1,7 +1,7 @@
 ## Hungarian Algorithm
 
 An implementation of the Hungarian Algorithm for solving the assignment problem.
-The implementation follows those [notes](http://www.cse.ust.hk/~golin/COMP572/Notes/Matching.pdf).
+The implementation follows those [notes](http://www.cse.ust.hk/~golin/COMP572/Notes/Matching.pdf) and runs in O(n^3).
 
 ### Usage
 
