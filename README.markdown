@@ -18,3 +18,8 @@ func main() {
 	fmt.Println(hungarianAlgorithm.Solve(a))
 }
 ```
+
+### License
+
+This project is under the MIT License.
+See the [LICENSE](https://github.com/oddg/hungarian-algorithm/blob/master/LICENSE) file for the full license text.
