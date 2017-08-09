@@ -1,4 +1,4 @@
-package main
+package hungarianAlgorithm
 
 // Returns the solution as an array `a` such that each row `i` is matched to
 // column `a[i]`

@@ -1,4 +1,4 @@
-package main
+package hungarianAlgorithm
 
 type label struct {
 	n      int

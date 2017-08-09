@@ -1,4 +1,4 @@
-package main
+package hungarianAlgorithm
 
 type matching struct {
 	n  int
