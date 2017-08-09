@@ -1,9 +1,5 @@
 package hungarianAlgorithm
 
-import (
-	"errors"
-)
-
 type edge struct {
 	i, j int
 }
@@ -12,14 +8,14 @@ type edgeSet struct {
 	set []edge
 }
 
-func (s *edgeSet) pop() (error, edge) {
+func (s *edgeSet) pop() (bool, edge) {
 	l := len(s.set)
 	if l == 0 {
-		return errors.New("There is no more edge."), edge{}
+		return false, edge{}
 	}
 	e := s.set[l-1]
 	s.set = s.set[:l-1]
-	return nil, e
+	return true, e
 }
 
 func (s *edgeSet) add(e edge) {
@@ -49,11 +45,8 @@ func makeTree(n int, r int, e []edge) tree {
 // - a boolean: whether the extension has been successful
 // - the index of the new element in the tree (when successful)
 func (t *tree) extend() (bool, int) {
-	for true {
-		err, e := t.edges.pop()
-		if err != nil {
-			return false, -1
-		}
+	b, e := t.edges.pop()
+	if b {
 		t.rightPrec[e.j] = e.i
 		return true, e.j
 	}
