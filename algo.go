@@ -2,7 +2,7 @@ package hungarianAlgorithm
 
 // Returns the solution as an array `a` such that each row `i` is matched to
 // column `a[i]`
-func Algo(costs [][]int) ([]int, error) {
+func Solve(costs [][]int) ([]int, error) {
 	// Validate the input
 	if err := validate(costs); err != nil {
 		return []int{}, err

@@ -5,13 +5,13 @@ import (
 	"testing"
 )
 
-type algoCase struct {
+type testCase struct {
 	in   [][]int
 	want []int
 }
 
-func TestAlgo(t *testing.T) {
-	cases := []algoCase{
+func TestSolve(t *testing.T) {
+	cases := []testCase{
 		{
 			in: [][]int{
 				{11, 6, 12},
@@ -34,7 +34,7 @@ func TestAlgo(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		got, err := Algo(c.in)
+		got, err := Solve(c.in)
 		if err != nil {
 			t.Errorf(err.Error())
 		}
